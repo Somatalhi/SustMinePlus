@@ -11,8 +11,8 @@ hierarchical Pareto procedure.
 
 ## Pipeline
 
-1. `make_shells.py` — nested pit shells by max-flow across 37 revenue factors
-   (0.20–0.90 step 0.02, and 1.00) → `shells.pkl`, `shell_of_block.npy`
+1. `make_shells.py` — nested pit shells by max-flow across 44 revenue factors
+   (0.06–0.90 step 0.02, and 1.00) → `shells.pkl`, `shell_of_block.npy`
 2. `make_bench_phases.py` — blocks inside the ultimate pit → equal-tonnage
    pushbacks × benches → `bench_phases.pkl`
 3. `check_precedence.py` — verifies the pushback precedence structure
