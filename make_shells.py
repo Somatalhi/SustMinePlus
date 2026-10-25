@@ -1,5 +1,5 @@
 """Step 1: blocks_small_30.csv -> shells.pkl + shell_of_block.npy
-shell_of_block[i] = index (1..37) of the first nested pit containing block i,
+shell_of_block[i] = index (1..44) of the first nested pit containing block i,
 or 0 if the block lies outside the RF 1.0 pit. Used by make_bench_phases.py."""
 import pickle, numpy as np, pandas as pd
 from params import P, COG
@@ -9,7 +9,7 @@ from sustmine_search.pit import ultimate_pit, precedence, OZ_PER_G
 df = pd.read_csv("blocks_small_30.csv")
 M = load_grid(df, d=30.0)
 
-rfs = list(np.round(np.concatenate([np.arange(0.2, 0.91, 0.02), [1.00]]), 3))
+rfs = list(np.round(np.concatenate([np.arange(0.06, 0.91, 0.02), [1.00]]), 3))
 prec = precedence(M, P["slope"])
 n = len(M["tonnes"])
 shell_of_block = np.zeros(n, dtype=int)
