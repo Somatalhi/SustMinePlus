@@ -1,0 +1,10 @@
+numpy
+pandas
+scipy
+igraph
+pymoo>=0.6
+jenkspy
+pulp>=3.0
+highspy
+matplotlib
+plotly
