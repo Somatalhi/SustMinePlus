@@ -21,7 +21,7 @@ hierarchical Pareto procedure.
 5. `python -m sustmine_search.cpit minelib/newman1.cpit minelib/newman1.prec` —
    validates the CPIT solver on a MineLib instance
 6. `python -m sustmine_search.evaluate_mip bench_phases.pkl` — one design
-   through both schedulers (smoke test)
+   through the evaluation model (smoke test)
 7. `run_smoke_mip.py` — short parallel NSGA-II run; proof of plumbing
 8. `run_exp1_mip.py --algo {nsga2,nsga3,lhs} --seed S --budget B` —
    Experiment 1 (search versus sampling), one run per call →
@@ -44,10 +44,9 @@ hierarchical Pareto procedure.
 * `sustmine_search/precedence.py` — pushback precedence for bench-phases
 * `sustmine_search/cpit.py` — MineLib CPIT in PuLP/HiGHS, cumulative ("by")
   variables, greedy warm start, MineLib file readers, solution checker
-* `sustmine_search/cpit_adapter.py` — bench-phase instance → CPIT resources
-  (rock, ore, optional blending rows); adaptive time cap
-* `sustmine_search/scheduler_mip.py` — value table and schedule aggregates;
-  the earlier "by" scheduler kept for comparison
+* `sustmine_search/cpit_adapter.py` — bench-phase economics (value table),
+  bench-phase instance → CPIT resources (rock, ore, optional blending rows),
+  adaptive time cap, schedule aggregates
 * `sustmine_search/evaluate_mip.py` — design vector → five objectives
   (NPV, waste, land, employees, job security) and four constraints;
   2-year periods, horizon bound
@@ -67,8 +66,8 @@ columns `ix, iy, iz, tonnes, grade, sulphide_frac`, `iz = 0` at the top bench.
 pip install -r requirements.txt
 ```
 
-PuLP 3.x with `highspy`; `python-igraph`, `pymoo`, `numpy`, `pandas`, `scipy`.
-Plotly and matplotlib only for the viewing scripts.
+PuLP 3.x with `highspy`; `igraph`, `pymoo`, `numpy`, `pandas`, `scipy`,
+`jenkspy`. Plotly and matplotlib only for the viewing scripts.
 
 ## On the cluster
 
