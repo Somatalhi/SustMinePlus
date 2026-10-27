@@ -1,4 +1,4 @@
-# sustmine-search
+# sustminePlus
 
 Benchmarking search-based and design-and-rank routes to sustainable strategic
 mine planning alternatives. NSGA-II, NSGA-III and a Latin hypercube sample are
