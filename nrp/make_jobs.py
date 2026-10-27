@@ -1,6 +1,9 @@
 """Write jobs.yaml: one Kubernetes Job per (algo, seed, budget).
-Usage:  python make_jobs.py --budget 500 --seeds 30 --workers 8
+Usage:  python make_jobs.py --budget 500 --seeds 30 --workers 16
 Then:   kubectl apply -f jobs.yaml
+Each job copies the code from the volume (/data/sustmine-search, refreshed by
+update-job.yaml) into /work, links results/ back to the volume, and runs one
+run_exp1_mip.py call. bench_phases.pkl travels with the repository.
 """
 import argparse
 
@@ -24,10 +27,11 @@ spec:
             set -e
             mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
             mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
-            cp /data/bench_phases.pkl /work/
             cd /work
             pip install -q -r requirements.txt
-            python run_exp1_mip.py --algo {algo} --seed {seed} --budget {budget} --workers {workers} --time_limit 60
+            python -c "import pandas as pd; bp=pd.read_pickle('bench_phases.pkl'); print(len(bp), 'bench-phases,', bp.pb.max(), 'pushbacks')"
+            python run_exp1_mip.py --algo {algo} --seed {seed} --budget {budget} --workers {workers} \\
+                   --time_limit 60 --retry_time_limit 300 --retry_gap 0.05
         resources:
           requests: {{cpu: "{workers}", memory: "{mem}Gi"}}
           limits:   {{cpu: "{workers}", memory: "{mem}Gi"}}
@@ -41,7 +45,7 @@ spec:
 ap = argparse.ArgumentParser()
 ap.add_argument("--budget", type=int, required=True)
 ap.add_argument("--seeds", type=int, default=30)
-ap.add_argument("--workers", type=int, default=8)
+ap.add_argument("--workers", type=int, default=16)
 ap.add_argument("--algos", nargs="+", default=["nsga2", "nsga3", "lhs"])
 a = ap.parse_args()
 
