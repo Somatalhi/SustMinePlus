@@ -1,0 +1,39 @@
+# Step 4: one-off job: clone the repo, install packages, build shells and bench-phases,
+# and leave bench_phases.pkl + the installed code on the volume for the experiment jobs.
+# blocks_small.csv must already be on the volume at /data/blocks_small.csv (see instructions).
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sustmine-prep
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: prep
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            apt-get update -qq && apt-get install -y -qq git > /dev/null
+            cd /data
+            rm -rf sustmine-search
+            git clone https://github.com/Somatalhi/sustmine-search.git
+            cd sustmine-search
+            pip install -q -r requirements.txt
+            cp /data/blocks_small.csv .
+            python make_shells.py
+            python make_bench_phases.py
+            python check_precedence.py
+            cp bench_phases.pkl shells.pkl shell_of_block.npy /data/
+            echo PREP DONE
+        resources:
+          requests: {cpu: "4", memory: "8Gi"}
+          limits:   {cpu: "4", memory: "8Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}

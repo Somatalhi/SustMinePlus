@@ -1,0 +1,11 @@
+# Step 3: persistent storage for data and results (10 GiB is plenty)
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sustmine-data
+spec:
+  storageClassName: rook-cephfs
+  accessModes: [ReadWriteMany]
+  resources:
+    requests:
+      storage: 10Gi

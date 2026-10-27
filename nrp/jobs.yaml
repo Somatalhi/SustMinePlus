@@ -1,0 +1,2880 @@
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s0-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 0 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s1-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 1 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s2-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 2 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s3-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 3 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s4-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 4 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s5-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 5 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s6-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 6 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s7-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 7 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s8-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 8 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s9-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 9 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s10-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 10 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s11-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 11 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s12-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 12 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s13-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 13 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s14-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 14 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s15-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 15 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s16-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 16 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s17-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 17 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s18-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 18 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s19-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 19 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s20-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 20 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s21-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 21 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s22-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 22 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s23-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 23 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s24-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 24 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s25-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 25 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s26-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 26 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s27-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 27 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s28-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 28 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga2-s29-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga2 --seed 29 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s0-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 0 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s1-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 1 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s2-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 2 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s3-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 3 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s4-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 4 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s5-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 5 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s6-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 6 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s7-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 7 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s8-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 8 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s9-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 9 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s10-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 10 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s11-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 11 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s12-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 12 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s13-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 13 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s14-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 14 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s15-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 15 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s16-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 16 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s17-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 17 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s18-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 18 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s19-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 19 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s20-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 20 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s21-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 21 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s22-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 22 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s23-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 23 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s24-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 24 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s25-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 25 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s26-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 26 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s27-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 27 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s28-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 28 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-nsga3-s29-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo nsga3 --seed 29 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s0-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 0 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s1-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 1 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s2-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 2 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s3-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 3 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s4-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 4 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s5-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 5 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s6-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 6 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s7-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 7 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s8-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 8 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s9-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 9 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s10-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 10 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s11-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 11 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s12-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 12 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s13-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 13 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s14-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 14 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s15-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 15 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s16-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 16 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s17-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 17 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s18-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 18 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s19-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 19 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s20-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 20 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s21-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 21 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s22-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 22 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s23-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 23 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s24-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 24 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s25-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 25 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s26-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 26 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s27-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 27 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s28-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 28 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sm-lhs-s29-b5000
+spec:
+  backoffLimit: 1
+  ttlSecondsAfterFinished: 172800
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: run
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            mkdir -p /work && cp -r /data/sustmine-search/. /work/ && rm -rf /work/results
+            mkdir -p /data/sustmine-search/results && ln -s /data/sustmine-search/results /work/results
+            cp /data/bench_phases.pkl /work/
+            cd /work
+            pip install -q -r requirements.txt
+            python run_exp1_mip.py --algo lhs --seed 29 --budget 5000 --workers 16 --time_limit 60
+        resources:
+          requests: {cpu: "16", memory: "16Gi"}
+          limits:   {cpu: "16", memory: "16Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}

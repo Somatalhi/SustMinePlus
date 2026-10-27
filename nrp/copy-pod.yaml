@@ -1,0 +1,18 @@
+# Helper pod that just mounts the volume so kubectl cp can move files in and out.
+apiVersion: v1
+kind: Pod
+metadata:
+  name: sustmine-copy
+spec:
+  containers:
+  - name: shell
+    image: python:3.12-slim
+    command: ["sleep", "infinity"]
+    resources:
+      requests: {cpu: "0.5", memory: "1Gi"}
+      limits:   {cpu: "0.5", memory: "1Gi"}
+    volumeMounts:
+    - {name: data, mountPath: /data}
+  volumes:
+  - name: data
+    persistentVolumeClaim: {claimName: sustmine-data}
