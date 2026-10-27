@@ -82,21 +82,23 @@ def build_cpit(d: pd.DataFrame, preds: dict, mining_cap: float, processing_cap: 
 def solve_cpit_by(d: pd.DataFrame, preds: dict, mining_cap: float, processing_cap: float,
                   T: int, discount: float, time_limit: int = 120, gap: float = 0.02,
                   blend=None, check: bool = False,
-                  retry_time_limit: int = 300, retry_gap: float = 0.05) -> dict:
+                  retry_time_limit: int = 300, retry_gap: float = 0.05,
+                  threads: int = 1) -> dict:
     """Solve the bench-phase instance as CPIT. Capacities in tonnes per period.
 
     Adaptive cap: solve with `time_limit`; if the solver stopped on time with no incumbent
     or with a gap above `retry_gap`, solve once more with `retry_time_limit`
     (retry_time_limit=0 disables the retry). `seconds` is the total wall time,
-    `n_solves` the number of solver calls."""
+    `n_solves` the number of solver calls. `threads` is passed to HiGHS; one thread per
+    solve is right when many evaluations run in parallel (one worker per CPU)."""
     I, pred_idx, ids = build_cpit(d, preds, mining_cap, processing_cap, T, discount, blend)
     t0 = time.time()
-    res = solve_cpit(I, pred_idx, time_limit=time_limit, gap=gap, msg=False)
+    res = solve_cpit(I, pred_idx, time_limit=time_limit, gap=gap, msg=False, threads=threads)
     n_solves = 1
     g = res["mip_gap"]
     timed_out = "time" in str(res["highs_status"]).lower()
     if retry_time_limit and timed_out and (not res["incumbent"] or not np.isfinite(g) or g > retry_gap):
-        res = solve_cpit(I, pred_idx, time_limit=retry_time_limit, gap=gap, msg=False)
+        res = solve_cpit(I, pred_idx, time_limit=retry_time_limit, gap=gap, msg=False, threads=threads)
         n_solves = 2
     elapsed = time.time() - t0
 
