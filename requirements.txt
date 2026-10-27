@@ -4,7 +4,7 @@ scipy
 igraph
 pymoo>=0.6
 jenkspy
-pulp>=3.0
+pulp>=3.0,<3.3
 highspy
 matplotlib
 plotly
