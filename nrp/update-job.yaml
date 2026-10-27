@@ -1,0 +1,58 @@
+# Refresh the code on the volume from GitHub without touching results or bench_phases.pkl.
+#   kubectl apply -f update-job.yaml
+#   kubectl logs job/sustmine-update      (expect "UPDATE DONE")
+#   kubectl delete job sustmine-update    (before running it again)
+apiVersion: batch/v1
+kind: Job
+# Refresh the code on the volume from GitHub (SustMinePlus, 30 m model).
+# The 20 m results are kept aside in results_20m/; the new runs write to a fresh results/.
+#   kubectl apply -f update-job.yaml
+#   kubectl logs job/sustmine-update      (expect "UPDATE DONE")
+#   kubectl delete job sustmine-update    (before running it again)
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: sustmine-update
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      restartPolicy: Never
+      containers:
+      - name: update
+        image: python:3.12-slim
+        command: ["/bin/bash", "-c"]
+        args:
+          - |
+            set -e
+            apt-get update -qq && apt-get install -y -qq git > /dev/null
+            cd /data
+            rm -rf sustmine-search-new
+            git clone --depth 1 https://github.com/Somatalhi/SustMinePlus.git sustmine-search-new
+            # keep the 20 m results out of the way (only the first time)
+            if [ -d sustmine-search/results ] && [ ! -d results_20m ]; then
+              mv sustmine-search/results /data/results_20m
+            fi
+            # carry over any 30 m results already produced
+            if [ -d sustmine-search/results ]; then
+              mv sustmine-search/results sustmine-search-new/results
+            fi
+            mkdir -p sustmine-search-new/results
+            rm -rf sustmine-search && mv sustmine-search-new sustmine-search
+            echo "--- code on volume now:"
+            ls sustmine-search
+            ls -la sustmine-search/blocks_small_30.csv sustmine-search/bench_phases.pkl
+            grep -c "greedy_schedule" sustmine-search/sustmine_search/cpit.py
+            grep "exp1_cpit" sustmine-search/run_exp1_mip.py
+            grep "DIAG_KEYS" sustmine-search/sustmine_search/problem_mip.py | head -1
+            echo "--- results dirs:"; ls sustmine-search/results; ls /data/results_20m | head
+            echo UPDATE DONE
+        resources:
+          requests: {cpu: "1", memory: "2Gi"}
+          limits:   {cpu: "1", memory: "2Gi"}
+        volumeMounts:
+        - {name: data, mountPath: /data}
+      volumes:
+      - name: data
+        persistentVolumeClaim: {claimName: sustmine-data}
+ 
