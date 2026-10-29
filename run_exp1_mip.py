@@ -5,7 +5,9 @@
   python run_exp1_mip.py --algo lhs   --seed 0 --budget 500
 
 Writes results/exp1_cpit_<budget>/<algo>_seed<seed>.npz with X, F, G and the per-evaluation
-solver diagnostics gap, sec, nsolve, incumb, T (see problem_mip.DIAG_KEYS).
+solver diagnostics gap, sec, nsolve, incumb, T (see problem_mip.DIAG_KEYS). X holds the
+designs as evaluated, i.e. projected onto the design space Omega (OmegaRepair for the
+evolutionary routes, evaluate_mip.project for the LHS sample).
 Evaluations run in parallel over --workers processes (default: all cores but one).
 """
 import argparse, os, pickle, time, multiprocessing as mp
@@ -17,7 +19,8 @@ from pymoo.operators.sampling.lhs import LHS
 from pymoo.optimize import minimize
 from pymoo.parallelization import StarmapParallelization
 from params import P
-from sustmine_search.problem_mip import SustMineMIP, DIAG_KEYS
+from sustmine_search.problem_mip import SustMineMIP, OmegaRepair, DIAG_KEYS
+from sustmine_search.evaluate_mip import project
 
 POP_II   = 100
 REF_DIRS = get_reference_directions("das-dennis", 5, n_partitions=5)   # 126
@@ -45,18 +48,20 @@ def main():
     prob = SustMineMIP(bp, P, time_limit=a.time_limit, retry_time_limit=a.retry_time_limit,
                        retry_gap=a.retry_gap,
                        elementwise_runner=StarmapParallelization(pool.starmap))
+    rep = OmegaRepair(bp, P)
     t0 = time.time()
     if a.algo == "nsga2":
-        res = minimize(prob, NSGA2(pop_size=POP_II), ("n_evals", a.budget), seed=a.seed, verbose=True)
+        res = minimize(prob, NSGA2(pop_size=POP_II, repair=rep), ("n_evals", a.budget), seed=a.seed, verbose=True)
         X, F, G = res.pop.get("X"), res.pop.get("F"), res.pop.get("G")
         diag = {k: res.pop.get(k) for k in DIAG_KEYS}
     elif a.algo == "nsga3":
-        res = minimize(prob, NSGA3(pop_size=len(REF_DIRS), ref_dirs=REF_DIRS),
+        res = minimize(prob, NSGA3(pop_size=len(REF_DIRS), ref_dirs=REF_DIRS, repair=rep),
                        ("n_evals", a.budget), seed=a.seed, verbose=True)
         X, F, G = res.pop.get("X"), res.pop.get("F"), res.pop.get("G")
         diag = {k: res.pop.get(k) for k in DIAG_KEYS}
     else:
         X = LHS().do(prob, a.budget, seed=a.seed).get("X")
+        X = np.array([project(x, bp, P) for x in X])              # onto Omega, as the EAs
         d = prob.evaluate(X, return_values_of=["F", "G"] + DIAG_KEYS, return_as_dictionary=True)
         F, G = d["F"], d["G"]
         diag = {k: d[k] for k in DIAG_KEYS}
