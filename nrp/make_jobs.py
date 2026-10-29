@@ -30,7 +30,8 @@ spec:
             cd /work
             pip install -q -r requirements.txt
             python -c "import pandas as pd; bp=pd.read_pickle('bench_phases.pkl'); print(len(bp), 'bench-phases,', bp.pb.max(), 'pushbacks')"
-                        python -u run_exp1_mip.py --algo {algo} --seed {seed} --budget {budget} --workers {workers} \\
+                        python -u run_exp1_mip.py --algo {algo} --seed {seed} --budget {budget} 
+            --workers {workers} \\
                    --time_limit 60 --retry_time_limit 300 --retry_gap 0.05
         resources:
           requests: {{cpu: "{workers}", memory: "{mem}Gi"}}
